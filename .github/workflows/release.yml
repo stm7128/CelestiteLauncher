@@ -1,0 +1,50 @@
+name: Build and Release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Publish (Native AOT & Trimmed)
+        run: |
+          dotnet publish Celestite.Desktop/Celestite.Desktop.csproj `
+          -c Release `
+          -r win-x64 `
+          --self-contained true `
+          -p:PublishAot=true `
+          -p:PublishTrimmed=true `
+          -p:PublishSingleFile=true `
+          -p:DebugType=None `
+          -p:DebugSymbols=false `
+          -o ./publish_output
+
+      - name: Zip
+        run: Compress-Archive -Path ./publish_output/* -DestinationPath Celestite_win-x64.zip
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: "Build #${{ github.run_number }} (${{ github.sha }})"
+          files: Celestite_win-x64.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
