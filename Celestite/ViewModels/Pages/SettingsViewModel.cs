@@ -47,7 +47,8 @@ namespace Celestite.ViewModels.Pages
 
         public LocaleObject[] SupportedLanguage => [
             new LocaleObject { LocaleCode = "zh-CN", Name = "简体中文 (zh-CN)" },
-            new LocaleObject { LocaleCode = "en-US", Name = "English (en-US)" }
+            new LocaleObject { LocaleCode = "en-US", Name = "English (en-US)" },
+            new LocaleObject { LocaleCode = "ja-JP", Name = "日本語 (ja-JP)" }
         ];
 
         public SettingsViewModel()
