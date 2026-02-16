@@ -1,3 +1,10 @@
+# CelestiteLauncher
+[![Build](https://github.com/stm7128/CelestiteLauncher/actions/workflows/release.yml/badge.svg)](https://github.com/stm7128/CelestiteLauncher/actions/workflows/release.yml)
+元のCelestiteLauncherに日本語化のためのファイルを追加したコードと、それのビルド。それ以外の変更点はなし。
+
+
+## 以下元のREADME.md
+
 # Celestite [![GitHub Release](https://img.shields.io/github/v/release/Kengxxiao/CelestiteLauncher)](https://github.com/Kengxxiao/CelestiteLauncher/releases)
 ![GitHub License](https://img.shields.io/github/license/Kengxxiao/CelestiteLauncher)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Kengxxiao/CelestiteLauncher)
