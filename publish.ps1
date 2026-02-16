@@ -66,5 +66,4 @@ if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to publish Celestite.Desktop."
     exit $LASTEXITCODE
 }
-
 Write-Host "Publish completed successfully. Output is in ./Release/Windows"
